@@ -1,0 +1,28 @@
+# String-Leetcode
+# Problem - 22
+# Generate Parentheses
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        findAll(result,"",0,0,n);
+        return result;
+    }
+        
+    void findAll(List<String> result,String str,int open,int close,int n)
+    {
+        if(str.length()==2*n)
+        {
+           result.add(str);
+        }
+        
+        if(open<n)
+        {
+            findAll(result,str+"(",open+1,close,n);
+        }
+        if(close<open)
+        {
+            findAll(result,str+")",open,close+1,n);
+        }
+    }
+}
